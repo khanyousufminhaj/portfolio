@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Portfolio Website</title>
+<link rel="stylesheet" href="styles.css">
+<script src="script.js" defer></script>
+</head>
+<body>
+<!-- Curtain for Entry Animation -->
+<div class="curtain">
+  <span class="entry-phrase">Curious Inquisitive Learner</span>
+</div>
+
+<!-- Navbar -->
+<nav class="navbar">
+  <div class="navbar-container">
+    <!-- Night Mode Toggle -->
+    <button id="night-mode-toggle" class="night-mode-toggle">
+        <span id="toggle-icon" class="toggle-icon">🌙</span>
+      </button>
+    <button class="navbar-toggler" id="navbar-toggler" aria-label="Toggle navigation">
+      <span class="toggler-icon"></span>
+      <span class="toggler-icon"></span>
+      <span class="toggler-icon"></span>
+    </button>
+    <div class="navbar-menu" id="navbarMenu">
+      <ul class="navbar-nav">
+        <li class="nav-item"><a href="#home" class="nav-link">Home</a></li>
+        <li class="nav-item"><a href="#projects" class="nav-link">Projects</a></li>
+        <li class="nav-item"><a href="#blog" class="nav-link">Blog</a></li>
+        <li class="nav-item"><a href="#contact" class="nav-link">Contact</a></li>
+        <li class="nav-item"><a href="#skills" class="nav-link">Skills</a></li>
+        <li class="nav-item"><a href="#certifications" class="nav-link">Certifications</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- Home Section -->
+<section id="home" class="section">
+  <h1>Welcome to My Portfolio</h1>
+  <p>Discover my projects, read my blog, and get in touch!</p>
+</section>
+
+<!-- Projects Section -->
+<section id="projects" class="section">
+    <h2 class="section">My Projects</h2>
+    <div id="github-projects" class="section">Loading projects...</div>
+  </section>
+  
+<!-- Blog Section -->
+<section id="blog" class="section">
+    <h2>Blog</h2>
+    <div id="medium-blogs">Loading blogs...</div>
+</section>
+
+<!-- Skills Section -->
+<section id="skills" class="section">
+  <h2>My Skills</h2>
+  <div class="skills-container">
+    <!-- Example of a Skill Card -->
+    <div class="flip-card" onclick="fetchGitHubProjectsBySkill('javascript')">
+      <div class="flip-card-inner">
+        <div class="flip-card-front">
+          <h3>JavaScript</h3>
+        </div>
+        <div class="flip-card-back">
+          <h3>JavaScript Projects:</h3>
+          <ul id="github-projects-javascript"></ul>
+        </div>
+      </div>
+    </div>
+    <!-- Add more skill cards as needed -->
+  </div>
+</section>
+
+
+<!-- Certifications Section -->
+<section id="certifications" class="section">
+  <h2>Certifications</h2>
+  <!-- Certifications will be displayed here -->
+</section>
+
+<!-- Resume Section -->
+<section id="resume" class="section">
+  <h2>My Resume</h2>
+  <a href="public-gdrive-link" target="_blank" class="resume-download-button">Download Resume</a>
+</section>
+
+<!-- Contact Form -->
+<section id="contact" class="section">
+  <h2>Contact Me</h2>
+  <form id="contact-form">
+    <input type="text" id="name" name="name" placeholder="Your Name" required>
+    <input type="email" id="email" name="email" placeholder="Your Email" required>
+    <textarea id="message" name="message" placeholder="Your Message" required></textarea>
+    <button type="submit">Send Message</button>
+  </form>
+  <!-- Social Media Cards -->
+  <!-- Add your social media cards here based on the image description -->
+</section>
+
+<!-- Scroll to Top Button -->
+<button id="scroll-to-top" class="scroll-to-top">↑</button>
+
+<!-- Footer -->
+<footer>
+  <p>© 2024 My Portfolio Website</p>
+</footer>
+
+<script src="script.js" defer></script>
+</body>
+</html>

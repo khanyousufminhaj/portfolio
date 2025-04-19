@@ -1,296 +1,638 @@
-/* Reset default browser styles */
+/* --- General Styles & Reset --- */
+:root {
+    --primary-light: #ffffff;
+    --secondary-light: #f4f4f4;
+    --text-light: #333333;
+    --accent-light: #007bff; /* Blue accent */
+    --hover-light: #e0e0e0;
+
+    --primary-dark: #1a1a1a; /* Darker background */
+    --secondary-dark: #2c2c2c; /* Slightly lighter dark */
+    --text-dark: #e0e0e0; /* Light text */
+    --accent-dark: #61dafb; /* Lighter blue/cyan accent for dark mode */
+    --hover-dark: #3a3a3a;
+
+    --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    --font-mono: 'Fira Code', monospace;
+
+    --transition-speed: 0.3s;
+}
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-  }
-  
-  :root {
-    --primary-color: #333; /* Dark grey */
-    --text-light: #fff; /* White */
-    --accent-color: #007bff; /* Blue */
-    --background-light: #f4f4f4; /* Light grey */
-    --background-dark: #2c3e50; /* Dark blue */
-  }
-  
-  /* Typography */
-  body {
-    font-family: 'Arial', sans-serif;
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: var(--font-sans);
     line-height: 1.6;
-  }
-  
-  /* Navbar Styles */
-  .navbar {
-    background-color: var(--primary-color);
-    padding: 0.5rem 1rem;
+    transition: background-color var(--transition-speed) ease, color var(--transition-speed) ease;
+    background-color: var(--primary-dark);
+    color: var(--text-dark);
+    overflow-x: hidden; /* Prevent horizontal scroll caused by animations */
+}
+
+body.light-mode {
+    background-color: var(--primary-light);
+    color: var(--text-light);
+}
+
+h1, h2, h3, h4, h5, h6 {
+    margin-bottom: 0.8rem;
+    font-weight: 600; /* Slightly bolder */
+}
+
+a {
+    text-decoration: none;
+    transition: color var(--transition-speed) ease;
+}
+
+body.light-mode a { color: var(--accent-light); }
+body.dark-mode a { color: var(--accent-dark); }
+body.light-mode a:hover { color: #0056b3; }
+body.dark-mode a:hover { color: #81e6ff; }
+
+
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+.section {
+    padding: 6rem 2rem;
+    max-width: 1100px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.section-title {
+    font-size: 2.5rem;
+    margin-bottom: 3rem;
+    position: relative;
+    display: inline-block;
+}
+
+/* Underline effect for titles */
+.section-title::after {
+    content: '';
+    display: block;
+    width: 60px;
+    height: 3px;
+    background: var(--accent-dark);
+    margin: 0.5rem auto 0;
+    transition: background-color var(--transition-speed) ease;
+}
+body.light-mode .section-title::after {
+    background: var(--accent-light);
+}
+
+/* --- Navbar --- */
+.navbar {
     position: fixed;
     top: 0;
+    left: 0;
     width: 100%;
-    z-index: 1030; /* High z-index to ensure it's above other content */
-  }
-  
-  .navbar-container {
-    max-width: 1200px;
-    margin: auto;
+    z-index: 1000;
+    transition: background-color var(--transition-speed) ease, box-shadow var(--transition-speed) ease;
+    background-color: rgba(26, 26, 26, 0.8); /* Semi-transparent dark */
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    padding: 0.8rem 0;
+}
+
+body.light-mode .navbar {
+    background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent light */
+}
+
+.navbar-container {
+    max-width: 1100px;
+    margin: 0 auto;
     display: flex;
     justify-content: space-between;
     align-items: center;
-  }
-  
-  /* Navbar Toggler */
-  .navbar-toggler {
-    display: none;
-    border: none;
+    padding: 0 2rem;
+}
+
+.nav-logo {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: var(--text-dark);
+}
+body.light-mode .nav-logo { color: var(--text-light); }
+
+.navbar-menu {
+    display: flex;
+}
+
+.navbar-nav {
+    display: flex;
+    align-items: center;
+    list-style: none;
+}
+
+.nav-item {
+    margin-left: 1.5rem;
+}
+
+.nav-link {
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--text-dark);
+    transition: color var(--transition-speed) ease;
+    position: relative; /* For underline effect */
+    padding-bottom: 0.3rem;
+}
+body.light-mode .nav-link { color: var(--text-light); }
+.nav-link:hover {
+    color: var(--accent-dark);
+}
+body.light-mode .nav-link:hover {
+    color: var(--accent-light);
+}
+/* Underline effect on hover/active */
+.nav-link::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: var(--accent-dark);
+    transition: width 0.3s ease;
+}
+body.light-mode .nav-link::after { background-color: var(--accent-light); }
+.nav-link:hover::after,
+.nav-link.active::after { /* Add .active class via JS on scroll */
+    width: 100%;
+}
+
+
+.navbar-toggler {
+    display: none; /* Hidden on desktop */
     background: none;
+    border: none;
     cursor: pointer;
-  }
-  
-  .navbar-toggler:focus,
-  .navbar-toggler:hover {
-    outline: none;
-  }
-  
-  .toggler-icon {
+    padding: 0.5rem;
+}
+
+.toggler-icon {
     display: block;
     width: 25px;
     height: 3px;
-    background-color: var(--text-light);
+    background-color: var(--text-dark);
     margin: 5px 0;
-    transition: all 0.3s;
-  }
-  
-  /* Navbar Menu */
-  .navbar-menu {
+    transition: background-color var(--transition-speed) ease, transform 0.3s ease, opacity 0.3s ease;
+}
+body.light-mode .toggler-icon { background-color: var(--text-light); }
+
+/* --- Night Mode Toggle --- */
+.night-mode-toggle {
+    background: none;
+    border: none;
+    color: var(--text-dark);
+    cursor: pointer;
+    font-size: 1.5rem; /* Adjust size */
+    padding: 0.3rem;
+    margin-left: 1rem;
+    transition: color var(--transition-speed) ease;
+    line-height: 1; /* Prevent extra space */
+}
+body.light-mode .night-mode-toggle { color: var(--text-light); }
+.night-mode-toggle:hover {
+    color: var(--accent-dark);
+}
+body.light-mode .night-mode-toggle:hover {
+    color: var(--accent-light);
+}
+
+/* --- Hero Section --- */
+.hero-section {
+    min-height: 100vh;
     display: flex;
     align-items: center;
-  }
-  
-  .navbar-nav {
-    list-style: none;
-    display: flex;
-  }
-  
-  .nav-item {
-    margin-left: 20px;
-  }
-  
-  .nav-link {
-    color: var(--text-light);
-    text-decoration: none;
-    padding: 0.5rem 1rem;
-    transition: color 0.3s;
-  }
-  
-  .nav-link:hover {
-    color: var(--accent-color);
-  }
-  
-  /* Responsive Navbar */
-  @media (max-width: 768px) {
-    .navbar-toggler {
-      display: block;
-    }
-  
-    .navbar-menu {
-      position: absolute;
-      top: 100%;
-      left: 0;
-      right: 0;
-      background-color: var(--primary-color);
-      flex-direction: column;
-      align-items: flex-start;
-      padding: 1rem;
-      display: none;
-      width: 100%;
-    }
-  
-    .nav-item {
-      width: 100%;
-      margin: 0;
-    }
-  
-    .nav-link {
-      padding: 1rem;
-      text-align: left;
-      width: 100%;
-      display: block;
-    }
-  
-    .navbar-menu.active {
-      display: flex;
-      flex-direction: column;
-    }
-  }
-  
-  /* Night Mode Toggle Styles */
-  .night-mode-toggle {
-    cursor: pointer;
-    position: absolute;
-    right: 1rem; /* Position to the right */
-    top: 50%;
-    transform: translateY(-50%);
-  }
-  
-  .toggle-icon {
-    color: var(--text-light);
+    justify-content: center;
+    text-align: center;
+    /* Optional background gradient or image */
+    background: linear-gradient(135deg, #1f1f1f 0%, #101010 100%);
+    padding-top: 80px; /* Account for navbar */
+}
+body.light-mode .hero-section {
+    background: linear-gradient(135deg, #eef2f3 0%, #ffffff 100%);
+}
+
+.hero-content h1 {
+    font-size: 3.5rem;
+    margin-bottom: 0.5rem;
+    font-weight: 700;
+}
+
+.hero-content .subtitle {
     font-size: 1.5rem;
-  }
-  
-  /* Dark mode styles */
-  .dark-mode {
-    background-color: var(--background-dark);
-    color: var(--text-light);
-  }
+    color: #aaa; /* Subtler text */
+    margin-bottom: 2rem;
+}
+body.light-mode .hero-content .subtitle { color: #666; }
 
-  .dark-mode .section {
-    background-color: var(--background-dark); /* Ensure sections have dark background */
-  }
-  
-  .dark-mode .navbar {
-    background-color: var(--background-dark);
-  }
-  
-  .dark-mode .nav-link,
-  .dark-mode footer {
-    color: var(--text-light);
-  }
-  
-  /* Section styles */
-  .section {
-    padding: 2rem;
-    margin-top: 56px; /* Offset for fixed navbar */
-  }
-  
-  /* Home section */
-  #home {
-    padding: 5rem 0;
-    text-align: center;
-  }
-  
-  /* Projects section */
-  #projects {
-    background: var(--background-light);
-  }
-  
-  /* Blog section */
-  #blog {
-    background: var(--background-light);
-  }
-  
-  /* Contact section */
-  #contact {
-    background: var(--background-light);
-  }
-  
-  /* Skills section */
-  #skills {
-    background: var(--background-light);
-  }
-  
-  /* Certifications section */
-  #certifications {
-    background: var(--background-light);
-  }
-  
-  /* Footer styles */
-  footer {
-    background-color: var(--primary-color);
-    color: var(--text-light);
-    text-align: center;
-    padding: 1rem 0;
-  }
-  
-  /* Add styles for project and blog cards */
-.project, .blog {
-    margin: 1rem;
-    padding: 1rem;
-    border: 1px solid #ddd;
+
+/* --- CTA Button --- */
+.cta-button {
+    display: inline-block;
+    padding: 0.8rem 1.8rem;
+    border: 2px solid var(--accent-dark);
+    color: var(--accent-dark);
+    border-radius: 5px;
+    font-size: 1rem;
+    font-weight: 500;
+    transition: background-color var(--transition-speed) ease, color var(--transition-speed) ease, transform 0.2s ease;
+}
+body.light-mode .cta-button {
+    border-color: var(--accent-light);
+    color: var(--accent-light);
+}
+
+.cta-button:hover {
+    background-color: var(--accent-dark);
+    color: var(--primary-dark);
+    transform: translateY(-2px);
+}
+body.light-mode .cta-button:hover {
+    background-color: var(--accent-light);
+    color: var(--primary-light);
+}
+
+/* --- About Section --- */
+.about-content {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: left; /* Or center if preferred */
+    line-height: 1.8;
+    font-size: 1.1rem;
+}
+
+/* --- Skills Section --- */
+.skills-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1.5rem;
+    margin-top: 2rem;
+}
+
+.skill-item {
+    background-color: var(--secondary-dark);
+    padding: 0.8rem 1.5rem;
+    border-radius: 20px; /* Pill shape */
+    font-size: 1rem;
+    font-weight: 500;
+    transition: background-color var(--transition-speed) ease, transform 0.2s ease;
+    border: 1px solid var(--hover-dark);
+}
+body.light-mode .skill-item {
+    background-color: var(--secondary-light);
+    border-color: var(--hover-light);
+}
+
+.skill-item:hover {
+    transform: translateY(-3px);
+    background-color: var(--hover-dark);
+}
+body.light-mode .skill-item:hover {
+    background-color: var(--hover-light);
+}
+
+/* --- Projects Section --- */
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+    text-align: left;
+}
+
+.project-card {
+    background-color: var(--secondary-dark);
+    padding: 1.5rem;
     border-radius: 8px;
-  }
-  
-  /* Add styles for flippable skill cards */
-.flip-card {
-  background-color: transparent;
-  width: 300px;
-  height: 200px;
-  perspective: 1000px;
-  margin: 10px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 1px solid var(--hover-dark);
+}
+body.light-mode .project-card {
+    background-color: var(--secondary-light);
+    border-color: var(--hover-light);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
 }
 
-.flip-card-inner {
-  position: relative;
-  width: 100%;
-  height: 100%;
-  text-align: center;
-  transition: transform 0.6s;
-  transform-style: preserve-3d;
+.project-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+body.light-mode .project-card:hover {
+     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
 }
 
-.flip-card:hover .flip-card-inner {
-  transform: rotateY(180deg);
+.project-card h3 {
+    margin-bottom: 0.5rem;
+    color: var(--accent-dark);
+}
+body.light-mode .project-card h3 { color: var(--accent-light); }
+
+.project-card p {
+    font-size: 0.95rem;
+    margin-bottom: 1rem;
 }
 
-.flip-card-front, .flip-card-back {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  backface-visibility: hidden;
+.project-card a {
+    font-weight: 500;
+    font-size: 0.9rem;
 }
 
-.flip-card-front {
-  background-color: #bbb;
-  color: black;
+/* --- Certifications Section --- */
+.certifications-list {
+    list-style: disc; /* Or none */
+    padding-left: 20px; /* Indent if using disc */
+    max-width: 700px;
+    margin: 1rem auto 0;
+    text-align: left;
 }
 
-.flip-card-back {
-  background-color: #2980b9;
-  color: white;
-  transform: rotateY(180deg);
+.certifications-list li {
+    margin-bottom: 0.8rem;
+    font-size: 1.1rem;
 }
 
-/* Add styles for the resume download button */
-.resume-download-button {
-  display: inline-block;
-  padding: 10px 20px;
-  background-color: var(--accent-color);
-  color: var(--text-light);
-  text-decoration: none;
-  border-radius: 5px;
-  transition: background-color 0.3s;
+/* --- Resume Section --- */
+#resume p {
+    margin-bottom: 1.5rem;
+    font-size: 1.1rem;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
-.resume-download-button:hover {
-  background-color: darken(var(--accent-color), 10%);
+/* --- Contact Section --- */
+.contact-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 3rem;
+    max-width: 900px;
+    margin: 2rem auto 0;
+    text-align: left;
 }
 
-/* Scroll to Top Button */
+.contact-info {
+    flex-basis: 400px;
+}
+
+.contact-info p {
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+.social-links {
+    margin-top: 1.5rem;
+}
+
+.social-links a {
+    font-size: 2rem; /* Icon size */
+    margin-right: 1.5rem;
+    color: var(--text-dark);
+    transition: color var(--transition-speed) ease, transform 0.2s ease;
+}
+body.light-mode .social-links a { color: var(--text-light); }
+
+.social-links a:hover {
+    color: var(--accent-dark);
+    transform: translateY(-3px);
+}
+body.light-mode .social-links a:hover { color: var(--accent-light); }
+
+/* Optional Contact Form Styles (if uncommented) */
+/*
+#contact-form {
+    flex-basis: 400px;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+#contact-form input,
+#contact-form textarea {
+    width: 100%;
+    padding: 0.8rem;
+    border: 1px solid var(--hover-dark);
+    border-radius: 5px;
+    background-color: var(--secondary-dark);
+    color: var(--text-dark);
+    font-family: var(--font-sans);
+    font-size: 1rem;
+}
+body.light-mode #contact-form input,
+body.light-mode #contact-form textarea {
+    background-color: var(--secondary-light);
+    color: var(--text-light);
+    border-color: var(--hover-light);
+}
+
+#contact-form textarea {
+    min-height: 120px;
+    resize: vertical;
+}
+
+#contact-form button {
+    padding: 0.8rem 1.5rem;
+    background-color: var(--accent-dark);
+    color: var(--primary-dark);
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: 500;
+    transition: background-color var(--transition-speed) ease, transform 0.2s ease;
+    align-self: flex-start;
+}
+body.light-mode #contact-form button {
+    background-color: var(--accent-light);
+    color: var(--primary-light);
+}
+
+#contact-form button:hover {
+    filter: brightness(1.1);
+    transform: translateY(-2px);
+}
+*/
+
+/* --- Footer --- */
+footer {
+    text-align: center;
+    padding: 2rem;
+    margin-top: 3rem;
+    border-top: 1px solid var(--hover-dark);
+    font-size: 0.9rem;
+    color: #aaa;
+}
+body.light-mode footer {
+    border-top-color: var(--hover-light);
+    color: #666;
+}
+
+/* --- Scroll to Top Button --- */
 .scroll-to-top {
-  display: none; /* Hidden by default */
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  /* Additional styles */
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    background-color: var(--accent-dark);
+    color: var(--primary-dark);
+    border: none;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    font-size: 1.5rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.3s ease;
+    z-index: 999;
+}
+body.light-mode .scroll-to-top {
+    background-color: var(--accent-light);
+    color: var(--primary-light);
 }
 
-
-/* Entry Animation Styles */
-.curtain {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: black;
-  z-index: 1050; /* Above everything */
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  transition: transform 1.5s ease;
+.scroll-to-top.visible {
+    opacity: 1;
+    visibility: visible;
 }
 
-.entry-phrase {
-  color: white;
-  font-size: 2rem;
-  /* Add more styles as needed */
+.scroll-to-top:hover {
+    transform: scale(1.1);
 }
-  /* Add other styles as needed */  
+
+/* --- Responsive Design --- */
+@media (max-width: 768px) {
+    .section {
+        padding: 4rem 1rem;
+    }
+
+    .section-title {
+        font-size: 2rem;
+    }
+
+    .hero-content h1 {
+        font-size: 2.5rem;
+    }
+    .hero-content .subtitle {
+        font-size: 1.2rem;
+    }
+
+    .navbar-menu {
+        display: none; /* Hide menu by default */
+        position: absolute;
+        top: 100%; /* Position below navbar */
+        left: 0;
+        width: 100%;
+        background-color: var(--primary-dark); /* Match navbar */
+        flex-direction: column;
+        text-align: center;
+        border-top: 1px solid var(--hover-dark);
+        padding: 1rem 0;
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(-10px);
+        transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.3s ease;
+    }
+    body.light-mode .navbar-menu {
+        background-color: var(--primary-light);
+        border-top-color: var(--hover-light);
+    }
+
+    .navbar-menu.active {
+        display: flex;
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
+    }
+
+    .navbar-nav {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .nav-item {
+        margin: 0.8rem 0;
+        margin-left: 0; /* Reset margin */
+        width: 100%;
+    }
+
+    .nav-link {
+        display: block; /* Make link take full width */
+        padding: 0.5rem 0;
+    }
+
+    /* Keep toggle button inside item list */
+    .nav-item:has(.night-mode-toggle) {
+        margin-top: 1rem;
+    }
+    .night-mode-toggle { margin-left: 0; } /* Reset margin */
+
+
+    .navbar-toggler {
+        display: block; /* Show toggler */
+    }
+
+    /* Animate toggler icon to 'X' */
+    .navbar-toggler.active .toggler-icon:nth-child(1) {
+        transform: rotate(45deg) translate(6px, 6px);
+    }
+    .navbar-toggler.active .toggler-icon:nth-child(2) {
+        opacity: 0;
+    }
+    .navbar-toggler.active .toggler-icon:nth-child(3) {
+        transform: rotate(-45deg) translate(6px, -6px);
+    }
+
+
+    .skills-grid {
+        gap: 1rem;
+    }
+    .skill-item {
+        padding: 0.6rem 1.2rem;
+        font-size: 0.9rem;
+    }
+
+    .projects-grid {
+        grid-template-columns: 1fr; /* Stack projects */
+    }
+
+    .contact-container {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+    .contact-info, #contact-form {
+        flex-basis: 100%;
+        max-width: 400px; /* Limit width on mobile */
+    }
+    .contact-info { text-align: center;}
+    .social-links { text-align: center; }
+     /*#contact-form button { align-self: center; }*/
+
+    .scroll-to-top {
+        width: 45px;
+        height: 45px;
+        font-size: 1.3rem;
+        bottom: 1rem;
+        right: 1rem;
+    }
+}
+

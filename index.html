@@ -1,115 +1,171 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Portfolio Website</title>
-<link rel="stylesheet" href="styles.css">
-<script src="script.js" defer></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yousuf Minhaj Khan - Portfolio</title>
+    <link rel="stylesheet" href="styles.css">
+    <!-- Add Font Awesome for icons if needed, or replace with SVGs later -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Consider adding AOS (Animate On Scroll) library for scroll animations -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 </head>
-<body>
-<!-- Curtain for Entry Animation -->
-<div class="curtain">
-  <span class="entry-phrase">Curious Inquisitive Learner</span>
-</div>
+<body class="dark-mode"> <!-- Start with dark mode as default -->
 
-<!-- Navbar -->
-<nav class="navbar">
-  <div class="navbar-container">
-    <!-- Night Mode Toggle -->
-    <button id="night-mode-toggle" class="night-mode-toggle">
-        <span id="toggle-icon" class="toggle-icon">🌙</span>
-      </button>
-    <button class="navbar-toggler" id="navbar-toggler" aria-label="Toggle navigation">
-      <span class="toggler-icon"></span>
-      <span class="toggler-icon"></span>
-      <span class="toggler-icon"></span>
-    </button>
-    <div class="navbar-menu" id="navbarMenu">
-      <ul class="navbar-nav">
-        <li class="nav-item"><a href="#home" class="nav-link">Home</a></li>
-        <li class="nav-item"><a href="#projects" class="nav-link">Projects</a></li>
-        <li class="nav-item"><a href="#blog" class="nav-link">Blog</a></li>
-        <li class="nav-item"><a href="#contact" class="nav-link">Contact</a></li>
-        <li class="nav-item"><a href="#skills" class="nav-link">Skills</a></li>
-        <li class="nav-item"><a href="#certifications" class="nav-link">Certifications</a></li>
-      </ul>
-    </div>
-  </div>
-</nav>
-
-<!-- Home Section -->
-<section id="home" class="section">
-  <h1>Welcome to My Portfolio</h1>
-  <p>Discover my projects, read my blog, and get in touch!</p>
-</section>
-
-<!-- Projects Section -->
-<section id="projects" class="section">
-    <h2 class="section">My Projects</h2>
-    <div id="github-projects" class="section">Loading projects...</div>
-  </section>
-  
-<!-- Blog Section -->
-<section id="blog" class="section">
-    <h2>Blog</h2>
-    <div id="medium-blogs">Loading blogs...</div>
-</section>
-
-<!-- Skills Section -->
-<section id="skills" class="section">
-  <h2>My Skills</h2>
-  <div class="skills-container">
-    <!-- Example of a Skill Card -->
-    <div class="flip-card" onclick="fetchGitHubProjectsBySkill('javascript')">
-      <div class="flip-card-inner">
-        <div class="flip-card-front">
-          <h3>JavaScript</h3>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="navbar-container">
+            <a href="#home" class="nav-logo">YMK</a>
+            <button class="navbar-toggler" id="navbar-toggler" aria-label="Toggle navigation">
+                <span class="toggler-icon"></span>
+                <span class="toggler-icon"></span>
+                <span class="toggler-icon"></span>
+            </button>
+            <div class="navbar-menu" id="navbarMenu">
+                <ul class="navbar-nav">
+                    <li class="nav-item"><a href="#home" class="nav-link">Home</a></li>
+                    <li class="nav-item"><a href="#about" class="nav-link">About</a></li>
+                    <li class="nav-item"><a href="#skills" class="nav-link">Skills</a></li>
+                    <li class="nav-item"><a href="#projects" class="nav-link">Projects</a></li>
+                    <li class="nav-item"><a href="#certifications" class="nav-link">Certifications</a></li>
+                    <li class="nav-item"><a href="#resume" class="nav-link">Resume</a></li>
+                    <li class="nav-item"><a href="#contact" class="nav-link">Contact</a></li>
+                    <!-- Night Mode Toggle -->
+                    <li class="nav-item">
+                        <button id="night-mode-toggle" class="night-mode-toggle">
+                             <span id="toggle-icon" class="toggle-icon">☀️</span> <!-- Start with sun icon -->
+                        </button>
+                    </li>
+                </ul>
+            </div>
         </div>
-        <div class="flip-card-back">
-          <h3>JavaScript Projects:</h3>
-          <ul id="github-projects-javascript"></ul>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero-section section">
+        <div class="hero-content" data-aos="fade-up">
+            <h1>Yousuf Minhaj Khan</h1>
+            <p class="subtitle">Data Scientist | Aspiring Machine Learning Engineer</p>
+            <a href="#projects" class="cta-button">View My Work</a>
         </div>
-      </div>
-    </div>
-    <!-- Add more skill cards as needed -->
-  </div>
-</section>
+        <!-- Optional: Add subtle background animation or graphic here -->
+    </section>
 
+    <!-- About Section -->
+    <section id="about" class="section" data-aos="fade-up">
+        <h2 class="section-title">About Me</h2>
+        <div class="about-content">
+            <p>
+                [Placeholder for About Me text - Please provide a brief summary based on your LinkedIn profile. e.g., "Driven and analytical Data Scientist with experience in building predictive models and extracting insights from complex datasets. Passionate about leveraging machine learning techniques to solve real-world problems. Currently expanding expertise in MLOps and deep learning..."]
+            </p>
+            <!-- Optional: Add a profile picture here -->
+        </div>
+    </section>
 
-<!-- Certifications Section -->
-<section id="certifications" class="section">
-  <h2>Certifications</h2>
-  <!-- Certifications will be displayed here -->
-</section>
+    <!-- Skills Section -->
+    <section id="skills" class="section" data-aos="fade-up">
+        <h2 class="section-title">Skills</h2>
+        <div class="skills-grid">
+            <!-- Placeholder Skill Items - Please provide your list of skills -->
+            <div class="skill-item" data-aos="fade-up" data-aos-delay="100">Python</div>
+            <div class="skill-item" data-aos="fade-up" data-aos-delay="150">SQL</div>
+            <div class="skill-item" data-aos="fade-up" data-aos-delay="200">Machine Learning</div>
+            <div class="skill-item" data-aos="fade-up" data-aos-delay="250">Data Analysis</div>
+            <div class="skill-item" data-aos="fade-up" data-aos-delay="300">TensorFlow</div>
+            <div class="skill-item" data-aos="fade-up" data-aos-delay="350">PyTorch</div>
+            <div class="skill-item" data-aos="fade-up" data-aos-delay="400">Pandas</div>
+            <div class="skill-item" data-aos="fade-up" data-aos-delay="450">Scikit-learn</div>
+            <!-- Add more skills -->
+        </div>
+    </section>
 
-<!-- Resume Section -->
-<section id="resume" class="section">
-  <h2>My Resume</h2>
-  <a href="public-gdrive-link" target="_blank" class="resume-download-button">Download Resume</a>
-</section>
+    <!-- Projects Section -->
+    <section id="projects" class="section" data-aos="fade-up">
+        <h2 class="section-title">Projects</h2>
+        <div class="projects-grid">
+            <!-- Placeholder Project Cards - Replace with your actual projects -->
+            <div class="project-card" data-aos="fade-up" data-aos-delay="100">
+                <h3>Project Title 1</h3>
+                <p>Brief description of the project and technologies used.</p>
+                <a href="#" target="_blank">View Project</a> <!-- Link to GitHub repo or live demo -->
+            </div>
+            <div class="project-card" data-aos="fade-up" data-aos-delay="200">
+                <h3>Project Title 2</h3>
+                <p>Brief description of the project and technologies used.</p>
+                <a href="#" target="_blank">View Project</a>
+            </div>
+            <!-- Add more project cards -->
+        </div>
 
-<!-- Contact Form -->
-<section id="contact" class="section">
-  <h2>Contact Me</h2>
-  <form id="contact-form">
-    <input type="text" id="name" name="name" placeholder="Your Name" required>
-    <input type="email" id="email" name="email" placeholder="Your Email" required>
-    <textarea id="message" name="message" placeholder="Your Message" required></textarea>
-    <button type="submit">Send Message</button>
-  </form>
-  <!-- Social Media Cards -->
-  <!-- Add your social media cards here based on the image description -->
-</section>
+        <!-- Embedded Project Previews -->
+        <h3 style="text-align: center; margin-top: 3rem; margin-bottom: 1rem;">Live Previews</h3>
+        <div class="project-previews" style="display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; margin-top: 1rem;">
+             <iframe src="https://sensor-har.ymkhan.live/" width="45%" height="350" style="border:1px solid #ccc;" title="Sensor HAR Project Preview"></iframe>
+             <iframe src="https://crisis-alert.streamlit.app/" width="45%" height="350" style="border:1px solid #ccc;" title="Crisis Alert Project Preview"></iframe>
+        </div>
 
-<!-- Scroll to Top Button -->
-<button id="scroll-to-top" class="scroll-to-top">↑</button>
+         <!-- Optionally add a link to your GitHub profile -->
+         <div style="text-align: center; margin-top: 2rem;">
+             <a href="https://github.com/khanyousufminhaj" target="_blank" class="cta-button">More on GitHub</a>
+         </div>
+    </section>
 
-<!-- Footer -->
-<footer>
-  <p>© 2024 My Portfolio Website</p>
-</footer>
+    <!-- Certifications Section -->
+    <section id="certifications" class="section" data-aos="fade-up">
+        <h2 class="section-title">Certifications</h2>
+        <ul class="certifications-list">
+            <!-- Placeholder Certifications - Replace with your actual certifications -->
+            <li data-aos="fade-up" data-aos-delay="100"><a href="#">Certification Name 1 (Issuing Org)</a></li>
+            <li data-aos="fade-up" data-aos-delay="200"><a href="#">Certification Name 2 (Issuing Org)</a></li>
+            <!-- Add more certifications -->
+        </ul>
+    </section>
 
-<script src="script.js" defer></script>
+    <!-- Resume Section -->
+    <section id="resume" class="section" data-aos="fade-up">
+      <h2 class="section-title">Resume</h2>
+      <p>Interested in learning more about my background? Download my resume.</p>
+      <div class="resume-preview" data-aos="fade-up" data-aos-delay="100">
+          <iframe src="https://drive.google.com/file/d/1jZf6KwtNFzedX8sHBARY-MlbR-i2HyTU/preview" width="50%" height="600px" style="border: none;" title="Resume Preview"></iframe> <!-- Placeholder Image - Replace with your actual resume image -->
+      </div> 
+      <a href="https://drive.usercontent.google.com/download?id=1jZf6KwtNFzedX8sHBARY-MlbR-i2HyTU&export=download" target="_blank" class="cta-button">Download Resume</a>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="section" data-aos="fade-up">
+        <h2 class="section-title">Get In Touch</h2>
+        <div class="contact-container">
+            <div class="contact-info">
+                <p>Feel free to reach out! Whether you have a question or just want to connect.</p>
+                <p>Email: <a href="mailto:yousufminhajkhan@gmail.com">yousufminhajkhan@gmail.com</a></p>
+                <div class="social-links">
+                    <!-- Placeholder Links - Replace # with your actual profile links -->
+                    <a href="https://www.linkedin.com/in/yousufmkhan/" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                    <a href="https://github.com/khanyousufminhaj" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                    <!-- Add other relevant links like Twitter, Medium etc. -->
+                    <!-- <a href="#" target="_blank" aria-label="Twitter"><i class="fab fa-twitter"></i></a> -->
+                    <!-- <a href="#" target="_blank" aria-label="Medium"><i class="fab fa-medium"></i></a> -->
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>© 2025 Yousuf Minhaj Khan.</p>
+    </footer>
+
+    <!-- Scroll to Top Button -->
+    <button id="scroll-to-top" class="scroll-to-top" aria-label="Scroll to top">↑</button>
+
+    <!-- Scripts -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="script.js"></script>
+    <script>
+        AOS.init({
+            duration: 800, // Animation duration
+            once: true, // Whether animation should happen only once - while scrolling down
+        });
+    </script>
 </body>
 </html>

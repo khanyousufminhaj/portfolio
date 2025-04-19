@@ -348,9 +348,49 @@ body.light-mode .project-card h3 { color: var(--accent-light); }
     margin-bottom: 1rem;
 }
 
-.project-card a {
+/* --- Styles for Project Topics --- */
+.project-topics {
+    margin-bottom: 1rem; /* Space below topics, before links */
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem; /* Space between badges */
+}
+
+.topic-badge {
+    background-color: var(--hover-dark); /* Use hover color for subtle contrast */
+    color: var(--accent-dark); /* Use accent color for text */
+    padding: 0.2rem 0.6rem;
+    border-radius: 12px; /* Pill shape */
+    font-size: 0.8rem;
     font-weight: 500;
-    font-size: 0.9rem;
+    border: 1px solid var(--secondary-dark); /* Subtle border */
+}
+
+body.light-mode .topic-badge {
+    background-color: var(--hover-light);
+    color: var(--accent-light);
+    border-color: var(--secondary-light);
+}
+/* --- End Styles for Project Topics --- */
+
+/* Container for project links */
+.project-links {
+    margin-top: 1rem; /* Add space above links */
+    display: flex;
+    gap: 1rem; /* Space between links */
+    flex-wrap: wrap; /* Allow links to wrap */
+}
+
+/* Style for loading message */
+.loading-message {
+    width: 100%;
+    text-align: center;
+    padding: 1rem;
+    font-style: italic;
+    color: #aaa;
+}
+body.light-mode .loading-message {
+    color: #666;
 }
 
 /* --- Certifications Section --- */
@@ -365,6 +405,13 @@ body.light-mode .project-card h3 { color: var(--accent-light); }
 .certifications-list li {
     margin-bottom: 0.8rem;
     font-size: 1.1rem;
+}
+
+body.light-mode .social-links a:hover { color: var(--accent-light); }
+
+/* Utility class to hide elements */
+.hidden {
+    display: none !important; /* Use important to override other display properties if needed */
 }
 
 /* --- Resume Section --- */

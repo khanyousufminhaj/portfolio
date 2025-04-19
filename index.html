@@ -27,7 +27,7 @@
                     <li class="nav-item"><a href="#about" class="nav-link">About</a></li>
                     <li class="nav-item"><a href="#skills" class="nav-link">Skills</a></li>
                     <li class="nav-item"><a href="#projects" class="nav-link">Projects</a></li>
-                    <li class="nav-item"><a href="#certifications" class="nav-link">Certifications</a></li>
+                    <!-- <li class="nav-item"><a href="#certifications" class="nav-link">Certifications</a></li> -->
                     <li class="nav-item"><a href="#resume" class="nav-link">Resume</a></li>
                     <li class="nav-item"><a href="#contact" class="nav-link">Contact</a></li>
                     <!-- Night Mode Toggle -->
@@ -56,7 +56,7 @@
         <h2 class="section-title">About Me</h2>
         <div class="about-content">
             <p>
-                [Placeholder for About Me text - Please provide a brief summary based on your LinkedIn profile. e.g., "Driven and analytical Data Scientist with experience in building predictive models and extracting insights from complex datasets. Passionate about leveraging machine learning techniques to solve real-world problems. Currently expanding expertise in MLOps and deep learning..."]
+                Driven and analytical. Passionate about leveraging machine learning techniques to solve real-world problems. Currently expanding expertise in MLOps and deep learning...
             </p>
             <!-- Optional: Add a profile picture here -->
         </div>
@@ -75,6 +75,11 @@
             <div class="skill-item" data-aos="fade-up" data-aos-delay="350">PyTorch</div>
             <div class="skill-item" data-aos="fade-up" data-aos-delay="400">Pandas</div>
             <div class="skill-item" data-aos="fade-up" data-aos-delay="450">Scikit-learn</div>
+            <div class="skill-item" data-aos="fade-up" data-aos-delay="650">Flask</div>
+            <div class="skill-item" data-aos="fade-up" data-aos-delay="700">Docker</div>
+            <div class="skill-item" data-aos="fade-up" data-aos-delay="750">Git</div>
+            <div class="skill-item" data-aos="fade-up" data-aos-delay="800">Streamlit</div>
+            
             <!-- Add more skills -->
         </div>
     </section>
@@ -83,43 +88,25 @@
     <section id="projects" class="section" data-aos="fade-up">
         <h2 class="section-title">Projects</h2>
         <div class="projects-grid">
-            <!-- Placeholder Project Cards - Replace with your actual projects -->
-            <div class="project-card" data-aos="fade-up" data-aos-delay="100">
-                <h3>Project Title 1</h3>
-                <p>Brief description of the project and technologies used.</p>
-                <a href="#" target="_blank">View Project</a> <!-- Link to GitHub repo or live demo -->
-            </div>
-            <div class="project-card" data-aos="fade-up" data-aos-delay="200">
-                <h3>Project Title 2</h3>
-                <p>Brief description of the project and technologies used.</p>
-                <a href="#" target="_blank">View Project</a>
-            </div>
-            <!-- Add more project cards -->
+            <!-- Project cards will be loaded here by JavaScript -->
+            <p class="loading-message">Loading projects...</p> <!-- Add class for easier selection -->
         </div>
-
-        <!-- Embedded Project Previews -->
-        <h3 style="text-align: center; margin-top: 3rem; margin-bottom: 1rem;">Live Previews</h3>
-        <div class="project-previews" style="display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; margin-top: 1rem;">
-             <iframe src="https://sensor-har.ymkhan.live/" width="45%" height="350" style="border:1px solid #ccc;" title="Sensor HAR Project Preview"></iframe>
-             <iframe src="https://crisis-alert.streamlit.app/" width="45%" height="350" style="border:1px solid #ccc;" title="Crisis Alert Project Preview"></iframe>
+        <!-- Add Load More Button -->
+        <div style="text-align: center; margin-top: 2rem;">
+            <button id="load-more-projects-btn" class="cta-button hidden">Load More</button>
         </div>
-
-         <!-- Optionally add a link to your GitHub profile -->
-         <div style="text-align: center; margin-top: 2rem;">
-             <a href="https://github.com/khanyousufminhaj" target="_blank" class="cta-button">More on GitHub</a>
-         </div>
     </section>
 
     <!-- Certifications Section -->
-    <section id="certifications" class="section" data-aos="fade-up">
+    <!-- <section id="certifications" class="section" data-aos="fade-up">
         <h2 class="section-title">Certifications</h2>
-        <ul class="certifications-list">
+        <ul class="certifications-list"> -->
             <!-- Placeholder Certifications - Replace with your actual certifications -->
-            <li data-aos="fade-up" data-aos-delay="100"><a href="#">Certification Name 1 (Issuing Org)</a></li>
-            <li data-aos="fade-up" data-aos-delay="200"><a href="#">Certification Name 2 (Issuing Org)</a></li>
+            <!-- <li data-aos="fade-up" data-aos-delay="100"><a href="#">Certification Name 1 (Issuing Org)</a></li>
+            <li data-aos="fade-up" data-aos-delay="200"><a href="#">Certification Name 2 (Issuing Org)</a></li> -->
             <!-- Add more certifications -->
-        </ul>
-    </section>
+        <!-- </ul>
+    </section> -->
 
     <!-- Resume Section -->
     <section id="resume" class="section" data-aos="fade-up">
